@@ -4,8 +4,25 @@ class Solution:
             return s
         if numRows == 2:
             return s[::2] + s[1::2]
-        
-        return s
+        mat = [[] for _ in range(numRows)]
+        string_index = 0
+        mat_index = 0
+        step = 1
+        # Gather ZigZag pattern
+        while string_index < len(s):
+            mat[mat_index].append(s[string_index])
+            # Alternate direction on edges
+            if mat_index == numRows-1:
+                step = -1
+            elif mat_index == 0:
+                step = 1
+            mat_index += step
+            string_index += 1
+        # Concatenate strings
+        out = ""
+        for l in mat:
+            out += "".join(l)
+        return out
 
 if __name__ == "__main__":
     S = Solution()
