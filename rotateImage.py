@@ -7,11 +7,10 @@ class Solution:
         """
         n = len(matrix)
         for i in range(n):
-            for j in range(n-1, i//2-1, -1):
-                new_i = j
-                new_j = n-i-1
-                matrix[i][j], matrix[new_i][new_j] = matrix[new_i][new_j], matrix[i][j]
-        # matrix[0][0], matrix[n-1][n-1] = matrix[n-1][n-1], matrix[0][0]
+            for j in range(i, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        for i in range(n):
+            matrix[i].reverse()
 
 if __name__ == "__main__":
     S = Solution()
