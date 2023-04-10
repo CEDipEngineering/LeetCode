@@ -99,7 +99,15 @@ def all_strictly_increasing_sequences(k: int, n: int, **kwargs) -> List[List[int
 
 
 def create_pattern(n: int) -> List[int]:
-    return []
+    
+    def add_number(pattern: List):
+        if len(pattern) >= n//2: return pattern
+        if pattern[-1] <= 0:
+            return pattern + pattern[:-1][::-1]
+        pattern.append(pattern[-1] - 5)
+        return add_number(pattern)
+    
+    return add_number([n])
 
 
 def find_middle(head: LinkedListNode) -> LinkedListNode:
@@ -114,6 +122,5 @@ def find_middle_rec(head: LinkedListNode, n: int=0) -> Tuple[int, LinkedListNode
     return None, 0
 
 # if __name__ == "__main__":
-#     print(k_combinations([1,2,3], 1))
-#     print(k_combinations([1,2,3], 2))
-#     print(k_combinations([1,2,3], 3))
+#     print(create_pattern(16))
+#     print(create_pattern(10))
