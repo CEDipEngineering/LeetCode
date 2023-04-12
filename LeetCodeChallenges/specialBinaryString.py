@@ -1,16 +1,13 @@
 class Solution:
     def makeLargestSpecial(self, s: str) -> str:
-        cumSum = [0]*len(s)
-        def conv(c: str):
-            if c == "1": return 1
-            return -1
-        
-        for i, e in enumerate(s):
-            if i == 0: cumSum[i] = conv(e)         
-            else:
-                cumSum[i] = cumSum[i-1] + conv(e)
-        
-        return cumSum
+        count = i = 0
+        res = []
+        for j, v in enumerate(s):
+            count = count + 1 if v=='1' else count - 1
+            if count == 0:
+                res.append('1' + self.makeLargestSpecial(s[i + 1:j]) + '0')
+                i = j + 1
+        return ''.join(sorted(res)[::-1])
 
 if __name__ == "__main__":
     S = Solution()
