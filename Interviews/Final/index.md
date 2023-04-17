@@ -22,3 +22,8 @@ The algorithm described above has a time complexity of O(n) and a space complexi
 
 - H. Mualem
 First attempt was to save last node in variable and attach back at beginning. Upon realizinh he could alter the nodes next element pointer, he quickly jumped closer to the solution. I might have tipped a bit too hard, but I think he got the gist of it pretty quickly after trying a bit. Tip #2 (keep track) might be a bit strong. He made two mistakes, one was trying to skip the first iteration of while loop, and forgetting to update the head node pointer (node 0 <-> node 1). The second was he forgot to return the last node at the end.
+
+- Felipe
+First attempt involved trying to move around values inside the list, swapping back and forth.
+Second attempt was to move node by node to the end of the list
+When told repeatedly to try only reversing the pointers, the subject eventually started coding.
